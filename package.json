@@ -2,6 +2,7 @@
   "name": "edwardkairuilinwebsite",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://edwardkairuilin.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
