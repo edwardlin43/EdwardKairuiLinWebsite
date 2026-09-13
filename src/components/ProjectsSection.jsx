@@ -1,12 +1,14 @@
 import { ExternalLink } from "lucide-react"
 import { ArrowRight } from "lucide-react"
 
+const basePath = import.meta.env.BASE_URL
+
 const projects = [
   {
     id: 1,
     title: "McMaster Chem-E-Car",
     description: "Developed and tested a safe chemical reaction using magnesium and hydrosulfuric acid to propel a hydrogen-powered vehicle",
-    image: "/projects/Chem-E-Car.jpg",
+    image: `${basePath}projects/Chem-E-Car.jpg`,
     tags: ["ChemEng", "Club", "McMaster"],
     demoUrl: "#",
   }, 
@@ -14,7 +16,7 @@ const projects = [
     id: 2,
     title: "Robotic Arm End-Effector",
     description: "Designed, developed, and tested a lightweight, high-precision end-effector for the Quanser Q-Arm to automate warehouse package handling",
-    image: "/projects/End-Effector.png",
+    image: `${basePath}projects/End-Effector.png`,
     tags: ["CAD Design", "Python","McMaster"],
     demoUrl: "#",
   },

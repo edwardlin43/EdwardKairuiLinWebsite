@@ -1,5 +1,7 @@
 import { Code, User, Briefcase } from "lucide-react"
 
+const resumePath = `${import.meta.env.BASE_URL}projects/Edward%20Kairui%20Lin%20Resume.pdf`
+
 export const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-4 relative">
@@ -35,7 +37,7 @@ export const AboutSection = () => {
               </a>
               
               <a 
-                href="/projects/Edward%20Kairui%20Lin%20Resume.pdf"
+                href={resumePath}
                 download="Edward Kairui Lin Resume.pdf" 
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
