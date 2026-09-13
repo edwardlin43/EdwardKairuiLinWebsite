@@ -7,13 +7,12 @@ function App() {
   return (
     <>
       <Toaster />
-      <BrowserRouter>
+      <BrowserRouter basename="/EdwardKairuiLinWebsite">
         <Routes>
-          <Route index element={<Home />}/>
-          <Route path="*" element={<NotFound />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-  
     </>
   );
 }
