@@ -31,8 +31,8 @@ export const ContactSection = () => {
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
 
-    const mailtoUrl = `mailto:edward.lin20098@gmail.com?subject=${subject}&body=${body}`;
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("edward.lin20098@gmail.com")}&su=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:edward.lin20098@gmail.com?subject=${subject}&body=${body}`;
 
     const gmailWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
 
@@ -41,8 +41,8 @@ export const ContactSection = () => {
     }
 
     toast({
-      title: "Message sent!",
-      description: "Gmail should open with your message ready to send. If it doesn't, your browser may be blocking popups.",
+      title: "Message ready!",
+      description: "Gmail is opening with your message pre-filled. If not, use the email link below.",
     });
 
     e.currentTarget.reset();
@@ -190,6 +190,15 @@ export const ContactSection = () => {
                 <Send size={16}/>
               </button>
 
+              <div className="pt-2 text-center text-sm text-muted-foreground">
+                Or email me directly: {" "}
+                <a
+                  href="mailto:edward.lin20098@gmail.com"
+                  className="text-primary underline underline-offset-4"
+                >
+                  edward.lin20098@gmail.com
+                </a>
+              </div>
             </form>
           </div>
 
