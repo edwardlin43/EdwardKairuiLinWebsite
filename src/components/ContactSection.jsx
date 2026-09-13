@@ -31,11 +31,18 @@ export const ContactSection = () => {
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
 
-    window.location.href = `mailto:edward.lin20098@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:edward.lin20098@gmail.com?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("edward.lin20098@gmail.com")}&su=${subject}&body=${body}`;
+
+    window.location.href = mailtoUrl;
+
+    setTimeout(() => {
+      window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    }, 500);
 
     toast({
       title: "Message sent!",
-      description: "Your email app should open with the message ready to send.",
+      description: "Your email app should open with the message ready to send, or Gmail will open as a fallback.",
     });
 
     e.currentTarget.reset();
