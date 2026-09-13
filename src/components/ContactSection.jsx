@@ -8,18 +8,38 @@ export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      toast({
+        title: "Please complete all fields",
+        description: "Name, email, and message are required before sending.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast ({
-        title: "Message sent!",
-        description: "Thank you for your message, I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
 
+    window.location.href = `mailto:edward.lin20098@gmail.com?subject=${subject}&body=${body}`;
+
+    toast({
+      title: "Message sent!",
+      description: "Your email app should open with the message ready to send.",
+    });
+
+    e.currentTarget.reset();
+    setIsSubmitting(false);
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -95,13 +115,10 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          <div 
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6">Send Me a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label 
                   htmlFor="name"
