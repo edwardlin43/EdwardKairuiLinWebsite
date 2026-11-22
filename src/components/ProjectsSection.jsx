@@ -1,8 +1,7 @@
 import { ExternalLink } from "lucide-react"
 import { ArrowRight } from "lucide-react"
+import { Link } from "react-router-dom"
 import { projects } from "@/data/projects"
-
-const basePath = import.meta.env.BASE_URL
 
 export const ProjectsSection = () => {
   return (
@@ -43,14 +42,14 @@ export const ProjectsSection = () => {
                 </p>
                 <div className="mt-auto flex justify-end items-center">
                   <div className="flex space-x-3">
-                    <a
-                      href={`${basePath}projects/${project.slug}`}
+                    <Link
+                      to={`/projects/${project.slug}`}
                       aria-label={`Open ${project.title} project page`}
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       {" "}
                       <ExternalLink size={20}/>
-                    </a>
+                    </Link>
 
                   </div>
                 </div>
