@@ -26,7 +26,7 @@ export const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const subject = encodeURIComponent(``);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
