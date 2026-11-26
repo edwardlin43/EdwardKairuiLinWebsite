@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ExternalLink } from "lucide-react"
 import { Link, useParams } from "react-router-dom"
 import { StarBackground } from "@/components/StarBackground"
 import { ThemeToggle } from "@/components/ThemeToggle"
@@ -53,6 +53,23 @@ export const ProjectPage = () => {
               {project.description}
             </p>
 
+            {project.resources?.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {project.resources.map((resource) => (
+                  <a
+                    key={resource.url}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cosmic-button inline-flex w-fit items-center gap-2"
+                  >
+                    {resource.label}
+                    <ExternalLink size={16} />
+                  </a>
+                ))}
+              </div>
+            )}
+
             {project.gallery?.length > 0 && (
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {project.gallery.map((photo) => (
@@ -60,6 +77,7 @@ export const ProjectPage = () => {
                     <img
                       src={photo.image}
                       alt={photo.caption}
+                      loading="lazy"
                       className="aspect-[4/3] w-full rounded-md object-cover"
                     />
                     <figcaption className="mt-2 text-center text-sm text-muted-foreground">
@@ -68,6 +86,31 @@ export const ProjectPage = () => {
                   </figure>
                 ))}
               </div>
+            )}
+
+            {project.video && (
+              <figure className="mt-8">
+                <video
+                  className="w-full rounded-md bg-black"
+                  controls
+                  preload="metadata"
+                  playsInline
+                >
+                  <source src={project.video.src} type="video/mp4" />
+                  Your browser does not support embedded video. You can{" "}
+                  <a
+                    href={project.video.src}
+                    className="text-primary underline"
+                    download
+                  >
+                    download the video
+                  </a>
+                  .
+                </video>
+                <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+                  {project.video.caption}
+                </figcaption>
+              </figure>
             )}
 
             {project.sections?.map((section) => (
